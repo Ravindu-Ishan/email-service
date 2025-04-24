@@ -1,0 +1,19 @@
+syntax = "proto3";
+package email;
+
+service EmailService {
+    rpc sendRestaurantRegConfirmationEmail(EmailAddress) returns (Response);
+    rpc sendRefundConfirmationEmail(EmailAddress) returns (Response);
+  }
+  
+  message EmailAddress {
+    string email = 1;
+  }
+
+  message Response {
+    string message = 1;
+    bool sent = 2;
+  }
+  
+
+
