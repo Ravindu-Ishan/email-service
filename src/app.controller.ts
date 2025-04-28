@@ -29,9 +29,25 @@ export class AppController implements EmailServiceController {
     );
   }
 
-  sendRefundConfirmationEmail(
+  sendDriverConfirmEmail(
     request: EmailAddress,
   ): Promise<Response> | Observable<Response> | Response {
-    throw new Error('Method not implemented.');
+    return this.appService.sendDriverRegistrationEmail(request.email);
+  }
+  sendDriverRejectEmail(
+    request: RejectionEmail,
+  ): Promise<Response> | Observable<Response> | Response {
+    return this.appService.sendDriverRejectionEmail(
+      request.email,
+      request.reason,
+    );
+  }
+
+  sendRefundConfirmationEmail(
+    request: RejectionEmail,
+  ): Promise<Response> | Observable<Response> | Response {
+    return this.appService.sendRefundEmail(
+      request.email,
+      request.reason);
   }
 }
